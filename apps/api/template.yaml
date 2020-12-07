@@ -116,6 +116,8 @@ Resources:
     Properties:
       CodeUri: src/app/hello
       Handler: hello.handler
+      Layers:
+        -   !Ref TestLayer
       Events:
         Hello:
           Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
@@ -138,6 +140,14 @@ Resources:
             Method: get
             RestApiId:
               Ref: Api
+  TestLayer:
+    Type: AWS::Serverless::LayerVersion
+    Description: Test layer
+    Properties:
+      ContentUri: ./src/test-layer
+      CompatibleRuntimes:
+        - nodejs10.x
+        - nodejs12.x
 Outputs:
   WebBucket:
     Value: !Ref WebBucket

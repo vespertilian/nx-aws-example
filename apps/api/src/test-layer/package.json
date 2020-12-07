@@ -1,0 +1,7 @@
+{
+  "name": "my-layer",
+  "main": "index.ts",
+  "dependencies": {
+    "unique-names-generator": "^4.3.1"
+  }
+}
